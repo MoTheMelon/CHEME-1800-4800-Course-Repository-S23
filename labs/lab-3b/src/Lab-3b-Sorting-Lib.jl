@@ -1,6 +1,3 @@
-# load external packages -
-using BenchmarkTools
-
 """
     bubble_sort(arr::Array{Int64, 1}) -> Array{Int64,1}
 
@@ -8,8 +5,8 @@ Sorts an array of integers into ascending order.
 
 See: https://en.wikipedia.org/wiki/Bubble_sort
 """
-function bubble_sort(arr::Array{Int64, 1})::Array{Int64,1}
-    
+function bubble_sort(arr::Array{Int64,1})::Array{Int64,1}
+
     # initialize -
     N = length(arr)
 
@@ -17,7 +14,7 @@ function bubble_sort(arr::Array{Int64, 1})::Array{Int64,1}
     for i ∈ 1:N
         for j ∈ 1:N-i
             if arr[j] > arr[j+1]
-                
+
                 # swap that values at j and j+1
                 tmp = arr[j]
                 arr[j] = a[j+1]
@@ -33,6 +30,7 @@ function bubble_sort(arr::Array{Int64, 1})::Array{Int64,1}
     return arr
 end
 
+
 """
     bubble_sort(arr::Array{Int64, 1}) -> Array{Int64,1}
 
@@ -40,8 +38,8 @@ Sorts an array of Float64 values into ascending order.
 
 See: https://en.wikipedia.org/wiki/Bubble_sort
 """
-function bubble_sort(arr::Array{Float64, 1})::Array{Float64,1}
-    
+function bubble_sort(arr::Array{Float64,1})::Array{Float64,1}
+
     # initialize -
     N = length(arr)
 
@@ -49,7 +47,7 @@ function bubble_sort(arr::Array{Float64, 1})::Array{Float64,1}
     for i ∈ 1:N
         for j ∈ 1:N-i
             if arr[j] > arr[j+1]
-                
+
                 # swap that values at j and j+1
                 tmp = arr[j]
                 arr[j] = arr[j+1]
@@ -65,8 +63,39 @@ function bubble_sort(arr::Array{Float64, 1})::Array{Float64,1}
     return arr
 end
 
-# use BenchmarkTools -
-N = 1000
-test = @benchmarkable bubble_sort(rand(N));
-tune!(test)
-result = run(test)
+"""
+    insertion_sort(arr::Array{Int64, 1})
+
+Sorts an array of Float64 values into ascending order.
+
+See: https://en.wikipedia.org/wiki/Insertion_sort
+"""
+function insertion_sort(arr::Array{Float64,1})::Array{Float64,1}
+    
+    # initialize -
+    N = length(arr)
+
+    # main -
+    for i ∈ 2:N
+
+        # grab the key element -
+        key = arr[i]
+
+        # inner while loop
+        j = i - 1 # set inner index j -
+        while j >= 1 && arr[j] > key
+            
+            # shift 1 postion to the right -
+            arr[j+1] = arr[j]
+
+            # decrement inner index 
+            j = j - 1
+        end
+
+        # set the key
+        arr[j+1] = key
+    end
+
+    # return sorted array -
+    return arr
+end
