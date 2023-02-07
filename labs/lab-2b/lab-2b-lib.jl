@@ -1,4 +1,4 @@
-# load external packages 
+# load external packages
 using Distributions
 using Plots
 using StatsPlots
