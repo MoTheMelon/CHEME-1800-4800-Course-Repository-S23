@@ -7,7 +7,7 @@ Custom mutable type that holds a DNA encryption key implemented as the dictionar
 """
 mutable struct DNAEncryptionKey <: AbstractEncryptionKey
 
-    # data -
+    # data
     encryptionkey::Dict{Char, String}
 
     # constructor 

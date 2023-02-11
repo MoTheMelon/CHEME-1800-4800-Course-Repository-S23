@@ -1,26 +1,31 @@
 """
     encrypt(plaintext::String) -> Dict{Int64,String}
+
+    needs to take in plaintext and reference individual characters so 
+    for i in length of plaintext string needs to be assigned a new value based on that input
+        new values found in factory so need to get those
+   
+        char = plaintext[begin]
+
+    encryption = Dict{Int64, String}()
+        encryption[1] = char
+    return encryption
+
+   
 """
 function encrypt(plaintext::String)::Dict{Int64,String}
     
-    # initialize -
-    message = Dict{Int64,String}()
-    counter = 0;
+    message = Dict{Int64, String}()
+    counter = 0
 
-    # build encryptionkey -
-    encryption_model = _build(DNAEncryptionKey);
-    encryptionkey = encryption_model.encryptionkey;
+    encryption_model = _build(DNAEncryptionKey)
+    encryptionkey = encryption_model.encryptionkey
 
-    for c ∈ uppercase(plaintext)
-
-        # encrypt -
-        message[counter] = encryptionkey[c]
-
-        # update the counter -
-        counter = counter + 1
+    for x in uppercase(plaintext)        
+        message[counter] = encryptionkey[x]
+        counter += 1
     end
 
-    # return -
     return message
 end
 
@@ -28,28 +33,6 @@ end
     decrypt(encrypteddata::Dict{Int64,String}) -> String
 """
 function decrypt(encrypteddata::Dict{Int64,String})::String
-
-   # initialize -
-   number_of_chars = length(encrypteddata)
-   inverse_encryptionkey_dict = Dict{String, Char}()
-   plaintext = Vector{Char}()
-
-   # build encryptionkey -
-   encryption_model = _build(DNAEncryptionKey);
-   encryptionkey = encryption_model.encryptionkey;
-
-   # build the inverse_key -
-   for (key, value) ∈ encryptionkey
-       inverse_encryptionkey_dict[value] = key
-   end
-
-   for i ∈ 0:(number_of_chars - 1)
-       
-       codon = encrypteddata[i]
-       value = inverse_encryptionkey_dict[codon]
-       push!(plaintext, value)
-   end
-
-   # return -
-   return String(plaintext)
+    
+    
 end

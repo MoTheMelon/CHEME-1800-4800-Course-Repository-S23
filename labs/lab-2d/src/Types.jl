@@ -16,4 +16,3 @@ mutable struct Student
 
     Student() = new()
 end
-

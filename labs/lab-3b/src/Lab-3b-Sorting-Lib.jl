@@ -17,7 +17,7 @@ function bubble_sort(arr::Array{Int64,1})::Array{Int64,1}
 
                 # swap that values at j and j+1
                 tmp = arr[j]
-                arr[j] = a[j+1]
+                arr[j] = arr[j+1]
                 arr[j+1] = tmp
 
                 # fancy impl (but hard to understand)

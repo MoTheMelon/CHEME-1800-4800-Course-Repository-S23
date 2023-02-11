@@ -4,7 +4,10 @@ module MyDNACryptographyPackage
     include("Include.jl")
 
     # export -
+  
     export encrypt
     export decrypt
 
 end # module MyDNACryptographyPackage
+
+ # implement me -

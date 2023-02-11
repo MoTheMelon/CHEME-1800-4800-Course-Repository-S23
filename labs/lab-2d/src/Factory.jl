@@ -38,7 +38,7 @@ function build_student_array(number_of_students::Int64; max_sid::Int64 = 10000):
         # build a student object -
         sid = rand(1:max_sid)
         netid = string(UUIDs.uuid4())[1:7]
-        local_student_model = build_student_object(sid = sid, netid=netid)
+        local_student_model = build_student_model(sid = sid, netid=netid)
 
         # add to the array -
         student_array[i] = local_student_model
