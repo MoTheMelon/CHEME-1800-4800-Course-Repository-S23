@@ -1,6 +1,7 @@
 
 """
-    read_reaction_file(path::String) -> Dict{Int,String}
+    read_reaction_file(path::String) -> Dict{String, MyKeggReaction}
+
 """
 function read_reaction_file(path::String)::Dict{String, MyKeggReaction}
     
@@ -9,12 +10,25 @@ function read_reaction_file(path::String)::Dict{String, MyKeggReaction}
 
     # initialize -
     reactions = Dict{String, MyKeggReaction}()
+    reaction = MyKeggReaction
+    delim = ","
     counter = 0; # zero-based index
+
+    
 
     # use example pattern from: https://varnerlab.github.io/CHEME-1800-Computing-Book/unit-1-basics/data-file-io.html#program-read-a-csv-file-refactored
     open(path, "r") do io # open a stream to the file
         for line in eachline(io) # read each line from the stream
             
+            if(contatins(line, "#"))
+                #ignores comments
+            else
+            fields = split(line, delim)
+
+            KeggReaction = build(reaction, string(fields[1]), string(fields[2]), string(fields[3]))
+            reactions[fields[1]] = KeggReaction
+
+            end
             # Impl me -
             # line is a line from the file  
 
