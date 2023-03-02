@@ -1,5 +1,5 @@
 """
-    _recursive_parser(q::Queue, s::Array{Char,1}, a::Array{String,1}; delim = ' ')
+_recursive_reaction_parser(q::Queue, s::Array{Char,1}, a::Array{String,1}; delim = ' ')
 """
 function _recursive_reaction_parser(q::Queue, tmp::Queue{Char}, a::Array{String,1}; 
     delim = ' ')
@@ -47,7 +47,7 @@ function _recursive_reaction_parser(q::Queue, tmp::Queue{Char}, a::Array{String,
 end
 
 """
-    recursive_parser(string::String; delim::Char=' ') -> Dict{Int64,String}
+recursive_reaction_parser(string::String; delim::Char=' ') -> Dict{Int64,String}
 """
 function recursive_reaction_parser(string::String; 
     delim::Char=' ')::Dict{Int64,String}
