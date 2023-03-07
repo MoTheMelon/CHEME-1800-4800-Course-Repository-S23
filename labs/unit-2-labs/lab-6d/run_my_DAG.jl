@@ -24,10 +24,10 @@ for (v, kids) ∈ adjlist
 end
 
 # build a weight matrix (default w/1's)
-W = weight(G);
+# W = weight(G);
 W = weight(G; wfunc = (i,j) ->
     if (i == 2 && j == 4)
-        return 1.0
+        return 100.0
     elseif (i == 4 && j == 6)
         return 1.0
     else
