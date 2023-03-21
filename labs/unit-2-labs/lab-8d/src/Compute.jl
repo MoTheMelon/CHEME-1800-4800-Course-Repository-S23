@@ -155,6 +155,11 @@ function ⊗(a::Array{Float64,1}, b::Array{Float64,1})::Array{Float64,2}
     m = length(a)  # length the input vector a
     n = length(b)  # length of input vector b
     Y = zeros(m,n) # holds the Outer product between a and b
+    for i in 1:m
+        for j in 1:n
+            Y[i,j] = a[i]*b[j]
+        end
+    end
 
     # main loop -
     # Look at: https://varnerlab.github.io/CHEME-1800-Computing-Book/unit-2-data/vectors-matricies-nla.html#defn-vector-vector-multiplication-op
