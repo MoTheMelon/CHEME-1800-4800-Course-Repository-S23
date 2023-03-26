@@ -11,12 +11,17 @@ function R(data::DataFrame; r::Float64 = 0.045)::Array{Float64,1}
     # initialize -
     number_of_trading_days = nrow(data);
     r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value
+    counter = 1
 
-    # TODO: compute the excess returns, store them in an array.
-    # ...
+    Ri = zeros(number_of_trading_days-1)
+
+    for t in 2:number_of_trading_days
+    r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value
+        Ri[counter] = log(data[t, :close]/data[t-1, :close]) - r̄
+        counter += 1
+    end
     
-    # default return: you'll need to change this to your array
-    return zeros(10);
+    return Ri
 end
 
 
