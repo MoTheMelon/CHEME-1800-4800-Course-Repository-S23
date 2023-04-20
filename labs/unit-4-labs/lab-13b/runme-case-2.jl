@@ -17,5 +17,5 @@ problem = build(MySimpleCobbDouglasChoiceProblem, (
 ));
 
 # solve problem -
-results = solve(problem)
+results = solve(problem);
 
