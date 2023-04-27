@@ -20,9 +20,10 @@ for i ∈ 1:number_of_sample_paths
     counter = 0
     while (rand(d))
         current_payout *= 2
+        push!(s, build(MyCoinFlipGameModel, (payout = current_payout, result = counter)))
         counter += 1
     end
-        push!(s, build(MyCoinFlipGameModel, (payout = current_payout, result = counter)))
+        push!(s, build(MyCoinFlipGameModel, (payout = current_payout, result = 0)))
     # store the stack for this instance of the game
     results[i] = s;
 end
