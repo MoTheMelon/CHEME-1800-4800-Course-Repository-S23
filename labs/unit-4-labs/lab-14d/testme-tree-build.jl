@@ -11,7 +11,7 @@ Sₒ = 86.18;  # AMD close price on 10/18/22
 
 # Set the volatility -
 IV = 0.544301    # AMD implied volatility for K = 62 USD/share Put
-σₘ = (IV/1.0);
+σₘ = (IV/1.0)    #strike
 
 # build a tree -
 model = build(MyAdjacencyBasedCRREquityPriceTree, μ = μ, σ = σₘ, T = (DTE/365.0), h = L, Sₒ = Sₒ)
